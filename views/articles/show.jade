@@ -1,0 +1,16 @@
+
+extends ../layout
+
+block header
+  header.main
+
+block content
+  .container
+    .two.columns
+      author = article.author
+      a(href='mailto:' + author.email)
+        img.photo(src=author.photo, alt=author.name.full)
+    .fourteen.columns
+      article
+        != article.html
+

@@ -1,0 +1,9 @@
+
+extends layout
+
+block content
+  #iconic.container
+    each icon in icons
+      .one.column
+        .iconic(class=icon, data-icon=icon)
+

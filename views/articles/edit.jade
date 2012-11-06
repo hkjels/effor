@@ -1,0 +1,39 @@
+
+extends layout
+
+append head
+  link(href='/css/md.css', rel='stylesheet')
+  script(src='/js/md.js')
+
+block content
+  form#form(action='..', method='post')
+    if article.markdown !== void 0
+      input(type='hidden', name='_method', value='put')
+    input#markdown(type='hidden', name='markdown', value=article.markdown)
+    input#title(type='hidden', name='title', value=article.title)
+
+  script
+    var article = !{JSON.stringify(article)}
+    article.markdown = (article.markdown || '').split('\n');
+
+    Editor.prototype.save = function () {
+      var save = this.options.localStorage;
+      localStorage[save] = this.getText(1, this.getSize());
+
+      var form = document.getElementById('form'),
+          markdown = document.getElementById('markdown'),
+          title = document.getElementById('title');
+
+      markdown.value = this.getText(1, this.getSize());
+      title.value = markdown.value.split('\n').shift()
+        .replace(/^#?/, '')
+        .replace(/^\s+/, '')
+        .replace(/\s+$/, '')
+
+      form.submit();
+    }
+
+    var Document = new Editor(localStorage[article.title] || article.markdown);
+    Document.goDocStart();
+    Document.focusInput();
+

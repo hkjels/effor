@@ -1,0 +1,29 @@
+
+extends ../layout
+
+append nav
+  if session.user.isPublisher
+    a#add(href='./new/', title=_.t('Add page'))
+      span.iconic.plus
+
+block content
+  .container
+    .sixteen.columns
+      if pages.length
+        table.table.fixed.bordered
+          thead
+            tr
+              th= _.t('Title')
+              th= _.t('Articles')
+              th= _.t('Appear in menu')
+              th= _.t('Added')
+          tbody
+            each page in pages
+              tr
+                td
+                  a(href='./' + page.title.toLowerCase() + '/')= page.title
+                td= page.articles.length
+                td
+                  input(type='checkbox', checked=page.inMenu, disabled)
+                td= moment(page.added).format('LL')
+

@@ -1,0 +1,16 @@
+
+extends layout
+
+block content
+  .container
+    .sixteen.columns
+      h3= error.message
+
+      if settings.verbose
+        pre.stack
+          stack = error.stack.split('\n')
+          - stack.shift()
+          each line in stack
+            span= line + '\n'
+
+

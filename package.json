@@ -1,0 +1,47 @@
+{
+  "name": "effor",
+  "author": "Henrik Kjelsberg <hkjels@me.com> (http://github.com/hkjels/)",
+  "version": "0.0.01",
+  "description": "Effortless blogging-software built on express.",
+  "homepage": "http://hkjels.github.com/effor/",
+  "keywords": [
+    "effor", "express", "declare", "blog", "personal", "notes", "markdown",
+    "mongoose", "mongodb"
+  ],
+  "config": {
+    "port": 3000,
+    "salt": "Cl4myd14",
+    "db": {
+      "host": "localhost",
+      "collection": "effor",
+      "port": "27017"
+    }
+  },
+  "scripts": {
+    "test": "export NODE_ENV='test'; ./node_modules/.bin/mocha -r should -R list",
+    "start": "node server.js"
+  },
+  "main": "server.js",
+  "dependencies": {
+    "express": "3.0.0",
+    "express-load": "1.1.2",
+    "express-resource": "1.0.0",
+    "flat": "0.1.x",
+    "jade": "0.27.x",
+    "lingo": "0.0.5",
+    "marked": "0.2.x",
+    "mkdirp": "0.3.x",
+    "mongoose": "3.3.x",
+    "mongoose-3x-types": "1.0.x",
+    "moment": "1.7.x",
+    "nib": "0.8.x",
+    "stylus": "0.30.x"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "engines": {
+    "node": "0.8.x"
+  }
+}

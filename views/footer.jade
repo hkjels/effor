@@ -1,0 +1,23 @@
+
+now = new Date().getFullYear()
+
+footer
+  .container
+    .twelve.columns
+      br
+      //-
+        a(href='/articles.xml')
+          span.iconic.rss
+          | Rss
+    .four.columns.aright
+      if !session.user.isOnline
+        a(href='/login/')= _.t('Login')
+      else
+        a(href='/logout/')= _.t('Log out')
+      p
+        span.stealth &copy; #{now} &nbsp;
+        span.capitalize #{meta.name}
+
+block scripts
+  script(src='/js/function.js')
+

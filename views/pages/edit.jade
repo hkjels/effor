@@ -1,0 +1,17 @@
+
+extends ../layout
+
+block content
+  form.container(action='../', method='post')
+    if page.title
+      input(type='hidden', name='_method', value='put')
+    .eight.columns
+      label(for='title')= _.t('Title')
+      input#title(type='text', name='title', value=page.title || null)
+      fieldset
+        label(for='visible')
+          input(type='hidden', name='inMenu', value=false)
+          input#visible(type='checkbox', name='inMenu', checked=page.inMenu)
+          span= _.t('Appear in menu')
+      input(type='submit', value=!page.title ? _.t('Create page') : _.t('Update page'))
+

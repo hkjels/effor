@@ -1,0 +1,14 @@
+
+extends ../layout
+
+append nav
+  if session.user.isPublisher
+    a#add(href='./articles/new/', title=_.t('Add article'))
+      span.iconic.plus
+
+block content
+  .container
+    if page.articles.length
+      each article in page.articles
+        include show
+

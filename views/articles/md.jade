@@ -1,0 +1,30 @@
+
+extends layout
+
+append head
+  link(href='/css/md.css', rel='stylesheet')
+  script(src='/js/superagent.js')
+  script(src='/js/md.js')
+
+block content
+  script
+    request = superagent;
+
+    var article = !{JSON.stringify(article)}
+    article.markdown = (article.markdown || '').split('\n');
+
+    Editor.prototype.save = function () {
+      var save = this.options.localStorage;
+      localStorage[save] = this.getText(1, this.getSize());
+      request.put('../')
+        .send({ markdown: this.getText(1, this.getSize()) })
+        .end(function (res) {
+          if (res.ok) console.log('Saved!');
+          else console.error('There was a problem ' + res.text);
+        });
+    }
+
+    var Document = new Editor(localStorage[article.title] || article.markdown);
+    Document.goDocStart();
+    Document.focusInput();
+

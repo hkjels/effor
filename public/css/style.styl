@@ -1,0 +1,177 @@
+
+@import 'nib'
+
+
+// Base
+
+identity = #ccc
+error = #ea3232
+success = darken(desaturate(#43ea9a, 20), 15)
+
+body
+  background: identity
+  color: #666
+
+a
+  color: #999
+  text-decoration: none
+  transition: all .2s ease-in-out
+  &:hover
+    color: #111
+
+for pos in left center right
+  .a{pos}
+    text-align: pos
+
+for display in block inline inline-block
+  .{display}
+    display: display
+
+.capitalize
+  text-transform: capitalize
+
+.iconic
+  font-size: 1.7em
+  vertical-align: middle
+
+span.iconic
+  margin-right: 5px
+
+
+
+// Layout
+
+#wrap
+  background: linear-gradient(bottom, whitesmoke, #f0f0f0)
+  box-shadow: 0 1px 4px rgba(black, 0.4), inset 0 -1px 0 white
+  padding-bottom: 60px
+  position: relative
+  z-index: 2
+
+#iconic
+  .iconic
+    margin: 10px auto
+    position: relative
+    text-align: center
+    &:hover
+      font-size: 2.5em
+      &:after
+        absolute: top -5px left 40px
+        background: rgba(black, 0.8)
+        border-radius: 4px
+        color: white
+        content: attr(data-icon)
+        display: block
+        font: 12px helvetica
+        padding: 5px
+        text-align: center
+        width: 60px
+        z-index: 2
+
+.stealth
+  color: white
+  text-shadow: 0 -1px 0 rgba(black, 0.2)
+
+.edit
+  relative: top 1.1em
+
+
+// Module
+
+.table
+  background: white
+  .edit
+    absolute: top left -40px
+    padding: 8px
+  th
+    font-weight: bold
+  td, th
+    border-top: #ddd solid 1px
+    padding: 8px
+    position: relative
+    text-align: left
+  &.fixed
+    table-layout: fixed
+    width: 100%
+  &.bordered
+    border-color: #ddd
+    border-collapse: separate
+    border-style: solid
+    border-width: 0 1px 1px 0
+    td, th
+      border-left: #ddd solid 1px
+
+.photo
+  background: white
+  box-shadow: 0 1px 2px rgba(black, 0.3)
+  padding: 3px
+
+.stack
+  span
+    transition: all .5s ease-in-out
+    &:hover
+      color: black
+
+.msg
+  border-radius: 4px
+  box-shadow: inset 0 15px 10px rgba(white, 0.2), 0 1px 2px rgba(black, 0.4)
+  color: white
+  display: inline-block
+  opacity: 1
+  padding: 8px 16px
+  text-shadow: 0 1px 1px rgba(black, 0.4)
+  transform: translateZ(0)
+  transition: all .2s ease-in-out
+  &.is-hidden
+    opacity: 0
+    transform: translateY(-50px)
+
+.success
+  background: success
+  border: darken(success, 20) solid 1px
+
+.error
+  background: error
+  border: darken(error, 20) solid 1px
+
+header.main
+  padding: 60px 0
+  .button
+    margin-right: 10px
+    transition: all .2s ease-in-out
+  a:first-letter
+    text-transform: uppercase
+
+article
+  position: relative
+  .clock
+    margin-left: 5px
+  .pencil
+    absolute: left -50px
+    opacity: 0
+    transition: opacity .2s ease-in-out
+  time
+    absolute: top right
+    color: #aaa
+    opacity: 0
+    transition: opacity 1s ease-in-out
+  &:hover
+    .iconic
+      opacity: 1
+    time
+      opacity: 1
+
+footer
+  background: linear-gradient(top, rgba(white, 0.2), rgba(white, 0))
+  color: darken(identity, 20)
+  padding: 30px 0
+  font-weight: bold
+  text-shadow: 0 -1px 0 rgba(white, 0.3)
+  a
+    color: inherit !important
+
+pre
+  code
+    background: white
+    box-shadow: 0 1px 2px rgba(black, 0.3)
+

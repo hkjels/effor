@@ -1,0 +1,26 @@
+
+extends ../layout
+
+append nav
+  if session.user.isPublisher
+    a#add(href='./new/', title=_.t('Add article'))
+      span.iconic.plus
+
+block content
+  .container
+    .sixteen.columns
+      table.table.fixed.bordered
+        thead
+          tr
+            th= _.t('Title')
+            th= _.t('Author')
+            th= _.t('Published')
+        each article in articles
+          author = article.author
+          tr
+            td
+              a(href='./' + article.title + '/')= article.title
+            td
+              a(href='mailto:' + author.email)= author.name.full
+            td= moment(article.published).format('LL')
+

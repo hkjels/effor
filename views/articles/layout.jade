@@ -1,0 +1,15 @@
+doctype 5
+html
+  block head
+    head
+      meta(charset='utf-8')
+      title= title
+      each val, key in meta
+        meta(name=key, content=val)
+      meta(name='viewport', content='width=device-width')
+      link(rel='stylesheet', href='/css/skeleton.css')
+      link(rel='stylesheet', href='/css/style.css')
+  body
+
+    block content
+

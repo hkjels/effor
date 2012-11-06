@@ -1,0 +1,29 @@
+
+extends ../layout
+
+block content
+  form.container(action='../', method='post')
+    if user.email
+      input(type='hidden', name='_method', value='put')
+      input(type='hidden', name='_id', value=user._id)
+    .four.columns
+      label(for='fullname')= _.t('Fullname')
+      input#fullname(type='text', name='name.full', value=user.name.full || null)
+      label(for='username')= _.t('Username')
+      input#username(type='text', name='name.user', value=user.name.user || null)
+    .four.columns
+      label(for='email')= _.t('E-mail')
+      input#email(type='email', name='email', value=user.email || null)
+      if user.email === session.user.email
+        label(for='password')= _.t('Password')
+        input#password(type='password', name='password')
+    .sixteen.columns
+      fieldset
+        label(for='publisher')
+          input#publisher(type='checkbox', name='isPublisher', checked=user.isPublisher || null)
+          span= _.t('Publisher')
+        label(for='editor')
+          input#editor(type='checkbox', name='isEditor', checked=user.isEditor || null)
+          span= _.t('Editor')
+      input(type='submit', value=user.email ? _.t('Update user') : _.t('Add user'))
+

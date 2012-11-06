@@ -1,0 +1,13 @@
+
+extends ../layout
+
+block content
+  .container
+    .two.columns
+      img.photo(src=user.photo, alt=user.full)
+    .fourteen.columns
+      h1= user.name.full
+      address
+        a(href='mailto:'+user.email)
+          span.iconic.mail-alt
+
