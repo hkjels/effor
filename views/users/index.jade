@@ -21,7 +21,7 @@ block content
         tbody
           each user in users
             me = user.email === session.user.email
-            href = './' + user.name.user + '/edit/'
+            href = '/users/' + user.name.user + '/edit/'
             tr
               td
                 if me
@@ -29,7 +29,7 @@ block content
                     span.iconic.pencil
                 input(type='radio', checked=user.isOnline, disabled)
               td
-                a(href='./'+user.name.user+'/')= user.name.user
+                a(href='/users/' + user.name.user + '/')= user.name.user
               if session.user.isPublisher
                 td
                   a(href='mailto:' + user.email)= user.email

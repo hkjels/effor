@@ -19,8 +19,8 @@ block content
           author = article.author
           tr
             td
-              a(href='./' + article.title + '/')= article.title
+              a(href='./' + encodeURI(article.title) + '/')= article.title
             td
-              a(href='mailto:' + author.email)= author.name.full
+              a(href='/users/' + encodeURI(author.name.user) + '/')= author.name.full
             td= moment(article.published).format('LL')
 

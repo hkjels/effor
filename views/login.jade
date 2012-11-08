@@ -5,10 +5,10 @@ block content
   .container
     form.sixteen.columns(action='./', method='post')
       fieldset
-        label(for='[name=email]')
+        label(for='email')
           span.iconic.mail-alt
           != _.t('E-mail')
-        input(name='email', type='email')
+        input#email(name='email', type='email')
         label(for='password')
           span.iconic.unlocked
           != _.t('Password')

@@ -1,7 +1,7 @@
 
 article.columns(class=article.columns)
   header
-    time(pubdate datetime=moment(article.date).format('YYYY-MM-DD'))
+    time(datetime=moment(article.date).format('YYYY-MM-DD'))
       != moment(article.date).fromNow()
       span.iconic.clock
     if session.user.isEditor
