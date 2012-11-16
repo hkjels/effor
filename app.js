@@ -15,6 +15,7 @@ var express = require('express'),
 load('config')
   .then('i18n')
   .then('models')
+  .then('controllers')
   .then('routes')
   .into(app);
 

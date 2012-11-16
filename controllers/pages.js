@@ -33,17 +33,18 @@ module.exports = function (app) {
     });
   };
 
-  // List existing pages. (sitemap)
+  /**
+   * Will display the page flagged as frontpage.
+   */
 
-  this.index = {
-    json: function (req, res) {},
-
-    html: function (req, res, next) {
-      Pages.find(function (err, pages) {
+  this.index = function (req, res, next) {
+    Pages
+      .findOne({frontpage: true})
+      .populate('articles')
+      .exec(function (err, page) {
         if (err) throw err;
-        res.render('pages/index', { pages: pages });
+        res.render('pages/page', { page: page });
       });
-    }
   };
 
   // Show a particular page
@@ -51,11 +52,8 @@ module.exports = function (app) {
   // one can easily browse them.
 
   this.show = function (req, res, next) {
-    switch (req.format) {
-      case 'json' : return res.json(req.page);
-      case 'html' :
-      default: res.render('pages/page', { page: req.page });
-    }
+    console.log(req.page);
+    res.render('pages/page', { page: req.page });
   };
 
   /**
@@ -69,23 +67,17 @@ module.exports = function (app) {
       .populate('articles')
       .exec(function (err, page) {
         if (err) return next(err);
+        req.page = page;
         next(null, page);
       });
   };
 
-  app.all('/pages*', function (req, res, next) {
-    Pages
-      .find({})
-      .exec(function (err, pages) {
-        if (err) throw err;
-        pages = pages.sort();
-        res.locals.pages = pages;
-        next();
-      });
-  });
+  /**
+   * Make pages the top-level resource and
+   * nest articles within.
+   */
 
-  var pages = app.resource('pages', this);
-  pages.add(require('./articles')(app));
+  return this;
 
 };
 

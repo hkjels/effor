@@ -25,6 +25,7 @@ module.exports = function (app) {
       if (!preferences.hasOwnProperty(key)) continue;
       app.set(key, preferences[key]);
     }
+    app.set('port', process.env.PORT || 3000);
     app.set('root', normalize(__dirname + '/../'));
     app.set('views', normalize(app.get('root') + 'views'));
     app.set('view engine', 'jade');
@@ -42,6 +43,12 @@ module.exports = function (app) {
     app.use(express.logger('dev'));
     app.use(express.errorHandler());
     app.enable('verbose');
+  });
+
+  // Ensure that tests do not manipulate the dev-db
+
+  app.configure('test', function () {
+    app.set('db collection', 'effor-test');
   });
 }
 

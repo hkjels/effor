@@ -1,12 +1,13 @@
 
+.messages
+  != message
+
 header.main
   .container
     .twelve.columns
       h1.capitalize
         a(href='/')= meta.name
     .four.columns.aright
-      != message
-
       block nav
         if typeof(pages) !== 'undefined'
           each page in pages

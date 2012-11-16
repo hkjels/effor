@@ -40,7 +40,10 @@ a:hover {
   vertical-align: middle;
 }
 span.iconic {
-  margin-right: 5px;
+  margin-right: 3px;
+  position: relative;
+  top: 1px;
+  ((null)): 0;
 }
 #wrap {
   background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #f5f5f5), color-stop(1, #f0f0f0));
@@ -121,6 +124,12 @@ span.iconic {
 .table.bordered th {
   border-left: #ddd solid 1px;
 }
+.messages {
+  position: fixed;
+  bottom: 100px;
+  left: 100px;
+  z-index: 10;
+}
 .photo {
   background: #fff;
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.3);
@@ -193,6 +202,7 @@ header.main a:first-letter {
   text-transform: uppercase;
 }
 article {
+  padding-bottom: 60px;
   position: relative;
 }
 article .clock {

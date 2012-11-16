@@ -11,11 +11,10 @@ var pkg = require('../package');
 
 var metadata = [
   'name',
+  'version',
   'author',
   'description',
-  'homepage',
-  'keywords',
-  'version'
+  'keywords'
 ];
 
 module.exports = function (app) {

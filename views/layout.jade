@@ -4,8 +4,8 @@ html
     head
       meta(charset='utf-8')
       title= title
-      each val, key in meta
-        meta(name=key, content=val)
+      each key in ['author', 'description', 'keywords']
+        meta(name=key, content=meta[key])
       meta(name='viewport', content='width=device-width')
       link(rel='stylesheet', href='/css/iconic.css')
       link(rel='stylesheet', href='/css/skeleton.css')

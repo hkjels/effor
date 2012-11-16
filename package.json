@@ -9,7 +9,6 @@
     "mongoose", "mongodb"
   ],
   "config": {
-    "port": 3000,
     "salt": "Cl4myd14",
     "db": {
       "host": "localhost",

@@ -16,12 +16,7 @@ module.exports = function (app) {
   // Form for creating new users
 
   this.new = function (req, res, next) {
-    if (!req.session.user.isPublisher) {
-      var err = new Error('You are not authorized to add new users');
-      err.code = 401;
-      return next(err);
-    }
-    var user = { name: {} };
+    var user = { name: {} }
     res.render('users/edit', { user: user });
   };
 
@@ -70,7 +65,7 @@ module.exports = function (app) {
     });
   };
 
-  app.resource('users', this);
+  return this;
 
 };
 

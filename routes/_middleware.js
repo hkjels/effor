@@ -9,6 +9,9 @@ var lingo = require('lingo'),
 
 module.exports = function (app) {
 
+  var db = app.get('db'),
+      Pages = db.model('Pages');
+
   // Lingo
 
   app.use(function (req, res, next) {
@@ -55,7 +58,31 @@ module.exports = function (app) {
   // It is important that routes are executed before
   // errors are handled.
 
-  app.use(app.router);
+  function restrict(req, res, next) {
+    if (!req.session.user.isPublisher) {
+      var err = new Error('You need to be authorized in order to complete this request.');
+      err.code = 401;
+      return next(err);
+    }
+    next();
+  }
+
+  // Restricted access
+
+  app.all(/(edit|new|create|update)/gi, restrict);
+
+  // Retrieve pages for navigation
+
+  app.all('/*', function (req, res, next) {
+    Pages
+      .find({})
+      .sort({frontpage: -1})
+      .exec(function (err, pages) {
+        if (err) throw err;
+        res.locals.pages = pages;
+        next();
+      });
+  });
 
   // Not found
 
@@ -72,6 +99,8 @@ module.exports = function (app) {
       default: res.render('error', { error: err });
     }
   });
+
+  app.use(app.router);
 
   // General error-handler
 

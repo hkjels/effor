@@ -87,7 +87,7 @@ module.exports = function (app) {
       });
   };
 
-  return app.resource('articles', this);
+  return this;
 
 }
 
