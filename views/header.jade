@@ -12,5 +12,6 @@ header.main
         if typeof(pages) !== 'undefined'
           each page in pages
             if page.inMenu
-              a.button(href=page.path, title=page.title)= page.title
+              path = page.frontpage ? '/' : page.path
+              a.button(href=path, title=page.title)= page.title
 

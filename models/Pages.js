@@ -18,7 +18,8 @@ module.exports = function (app) {
 
   Pages.virtual('path')
     .get(function () {
-      return this.frontpage ? '/' : '/' + this.title.toLowerCase() + '/';
+      var title = this.title.toLowerCase();
+      return '/' + title + '/';
     });
 
   return app.get('db').model('Pages', Pages);

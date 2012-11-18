@@ -36,11 +36,12 @@ module.exports = function (app) {
 
   app.use(function(req, res, next){
     var err = req.session.error,
-        msg = req.session.success;
-    delete req.session.error;
-    delete req.session.success;
+        msg = req.session.success,
+        inf = req.session.info;
+    req.session.error = req.session.success = req.session.inf = null;
     res.locals.message = '';
     if (err) res.locals.message = '<p class="msg error">' + err + '</p>';
+    if (inf) res.locals.message = '<p class="msg info">' + msg + '</p>';
     if (msg) res.locals.message = '<p class="msg success">' + msg + '</p>';
     next();
   });

@@ -52,7 +52,6 @@ module.exports = function (app) {
   // one can easily browse them.
 
   this.show = function (req, res, next) {
-    console.log(req.page);
     res.render('pages/page', { page: req.page });
   };
 

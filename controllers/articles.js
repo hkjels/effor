@@ -1,6 +1,10 @@
 
 module.exports = function (app) {
 
+  /**
+   * Module dependencies.
+   */
+
   var db = app.get('db'),
       Articles = db.model('Articles'),
       Pages = db.model('Pages');

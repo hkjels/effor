@@ -28,11 +28,14 @@ module.exports = function (app) {
 
   Articles.virtual('path')
     .get(function () {
-      return 'articles/' + this.title.toLowerCase() + '/';
+      var title = this.title.toLowerCase();
+      return 'articles/' + title + '/';
     });
 
   Articles.virtual('html')
-    .get(function () { return md(this.markdown); });
+    .get(function () {
+      return md(this.markdown);
+    });
 
   return app.get('db').model('Articles', Articles);
 
