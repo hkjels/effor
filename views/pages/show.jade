@@ -5,7 +5,7 @@ article.columns(class=article.columns)
       != moment(article.published).fromNow()
       span.iconic.clock
     if session.user.isEditor
-      a.edit(href=page.path + article.path + 'edit/', title=_.t('Edit article'))
+      a.edit(href=page.path + article.path + '/edit/', title=_.t('Edit article'))
         .iconic.pencil
 
   != article.html

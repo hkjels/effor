@@ -19,7 +19,7 @@ module.exports = function (app) {
   Pages.virtual('path')
     .get(function () {
       var title = this.title.toLowerCase();
-      return '/' + title + '/';
+      return '/' + title;
     });
 
   return app.get('db').model('Pages', Pages);

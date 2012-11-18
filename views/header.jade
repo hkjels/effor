@@ -9,6 +9,9 @@ header.main
         a(href='/')= meta.name
     .four.columns.aright
       block nav
+        if session.user.isPublisher
+          a(href='/new/', title=_.t('Add page'))
+            span.iconic.document
         if typeof(pages) !== 'undefined'
           each page in pages
             if page.inMenu

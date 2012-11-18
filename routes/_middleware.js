@@ -61,9 +61,8 @@ module.exports = function (app) {
 
   function restrict(req, res, next) {
     if (!req.session.user.isPublisher) {
-      var err = new Error('You need to be authorized in order to complete this request.');
-      err.code = 401;
-      return next(err);
+      req.session.error = 'You need to be authorized in order to complete this request.';
+      res.redirect('/login/');
     }
     next();
   }

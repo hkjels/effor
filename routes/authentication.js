@@ -27,7 +27,7 @@ module.exports = function (app) {
           req.session.regenerate(function(){
             req.session.user = user;
             req.session.success = res.locals._.t('Velkommen {name}', {name: user.name.first});
-            res.redirect('/');
+            res.redirect('back');
           });
         });
       } else {

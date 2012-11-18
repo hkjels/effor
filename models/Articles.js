@@ -29,7 +29,7 @@ module.exports = function (app) {
   Articles.virtual('path')
     .get(function () {
       var title = this.title.toLowerCase();
-      return 'articles/' + title + '/';
+      return '/articles/' + title;
     });
 
   Articles.virtual('html')

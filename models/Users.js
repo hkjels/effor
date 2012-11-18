@@ -5,7 +5,8 @@
 
 var Schema = require('mongoose').Schema,
     Types = Schema.Types,
-    crypto = require('crypto');
+    crypto = require('crypto'),
+    os = require('os');
 
 
 module.exports = function (app) {

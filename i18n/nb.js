@@ -20,6 +20,7 @@ module.exports = function (app) {
 
   nb.translations = {
     'Add article': 'Legg til artikkel',
+    'Add page': 'Legg til side',
     'Login': 'Logg inn',
     'Log out': 'Logg ut',
     'E-mail': 'E-post',
